@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-deployment
+  namespace: nodeProject
+  labels:
+    app: nodejsApplication
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejsApplication
+  template:
+    metadata:
+      labels:
+        app: nodejsApplication
+    spec:
+      containers:
+      - name: tanmayfuse1221/nodejsApplication
+        image: nginx:1.14.2
+        env:
+          - name: DB_CONNECTIONLIMIT
+            value: 10
+          - name: DB_HOST
+            value: mysql
+          - name: DB_USER
+            value: 'user'
+          - name: DB_PASSWORD
+            value: 'password'
+          - name: DB_NAME
+            value: 'search'
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
