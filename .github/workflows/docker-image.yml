@@ -19,10 +19,12 @@ jobs:
       with:
         username: tanmayfuse1221
         password: ${{ secrets.DOCKERPWD }}
-    
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v4.0.0
-      with:
-        context: ${{ github.workspace }}/nodePort/
-        # Path to the Dockerfile
-        file: ${{ github.workspace }}/nodePort/
+    - run: |
+        cd ${{ github.workspace }}
+        ls
+#     - name: Build and push Docker images
+#       uses: docker/build-push-action@v4.0.0
+#       with:
+#         context: ${{ github.workspace }}/nodePort/
+#         # Path to the Dockerfile
+#         file: ${{ github.workspace }}/nodePort/
