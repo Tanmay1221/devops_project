@@ -23,6 +23,6 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v4.0.0
       with:
-        context: ../../nodePort/
+        context: ${{ env.GITHUB_WORKSPACE }}/nodePort/
         # Path to the Dockerfile
-        file: ../../nodePort/
+        file: ${{ env.GITHUB_WORKSPACE }}/nodePort/
