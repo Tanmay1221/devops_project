@@ -22,5 +22,5 @@ jobs:
     - name: Build & Push Image
       run: |
         echo ${{ secrets.DOCKERPWD }} | docker login -u tanmayfuse1221 --password-stdin
-        docker image build -t tanmayfuse1221/nodejsapplication:latest .
+        docker image build -t tanmayfuse1221/nodejsapplication:latest ./nodeProject
         docker push tanmayfuse1221/nodejsapplication:latest
