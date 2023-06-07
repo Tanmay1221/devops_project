@@ -19,12 +19,8 @@ jobs:
       with:
         username: tanmayfuse1221
         password: ${{ secrets.DOCKERPWD }}
-#     - run: |
-#         cd ${{ github.workspace }}
-#         ls
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v4.0.0
-      with:
-        context: ${{ github.workspace }}/nodeProject/
-        # Path to the Dockerfile
-        file: ${{ github.workspace }}/nodeProject/
+    - name: Build & Push Image
+      run: |
+        echo ${{ secrets.DOCKERPWD }} | docker login -u tanmayfuse1221 --password-stdin
+        docker image build -t tanmayfuse1221/nodejsapplication:latest .
+        docker push tanmayfuse1221/nodejsapplication:latest
